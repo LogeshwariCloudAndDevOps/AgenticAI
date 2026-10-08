@@ -1,0 +1,86 @@
+// {
+//   // Display name for this crew
+//   "name": "ResearchAgentCrew",
+
+//   "agents": ["expert_report_generator_on_to", "expert_blog_writer_on_topic"],
+
+//   "tasks": [
+//     {
+//       "name": "report task",
+
+//       "description": "Based on the input topic: {topic}, generate a detailed report including all the latest facts and future trends in a structured way. The report should be around 2000 words.",
+//       // Clear definition of what the output should look like
+//       "expected_output": "2000 words long report on the topic: {topic}",
+
+//       "agent": "expert_report_generator_on_to"
+
+//     }
+// ,
+//     {
+//       // Task identifier
+//       "name": "based_on_the_report_task",
+
+//       // What the task should accomplish
+//       // Use {placeholder} inputs here; crewai run prompts for missing values
+//       "description": "Based on the report on {topic}, create a well written and structured blog that even a 5 year old can understand. The blog should be around 500 words.",
+//       // Clear definition of what the output should look like
+//       "expected_output": "500 words long blog post on topic: {topic}.The blog should be well structured with a creative and fun heading.",
+
+//       "agent": "expert_blog_writer_on_topic"
+
+      
+//     }
+
+//   ],
+
+//   "process": "sequential",
+
+//   // Enable verbose logging during execution
+//   "verbose": true,
+
+//   "memory": true,
+
+//   "inputs": {"topic": "Quantum Computing"}
+// }
+
+{
+  // Display name for this crew
+  "name": "ResearchAgentCrew",
+
+  "agents": [
+    "expert_report_generator_on_to",
+    "expert_blog_writer_on_topic"
+  ],
+
+  "tasks": [
+    {
+      "name": "based_on_the_input_task",
+
+      "description": "Based on the input topic: {topic}, generate a detailed report including all the latest facts and future trends in a structured way. The report should be around 2000 words.",
+
+      "expected_output": "A 20-word report on the topic: {topic}",
+
+      "agent": "expert_report_generator_on_to"
+    },
+
+    {
+      "name": "based_on_the_report_task",
+
+      "description": "Based on the report generated for {topic}, create a well-written and structured blog that even a 5-year-old can understand. The blog should be around 500 words.",
+
+      "expected_output": "A 50-word blog post on the topic: {topic}. The blog should be well structured with a creative and fun heading.",
+
+      "agent": "expert_blog_writer_on_topic"
+    }
+  ],
+
+  "process": "sequential",
+
+  "verbose": true,
+
+  "memory": true,
+
+  "inputs": {
+    "topic": "Moon"
+  }
+}
